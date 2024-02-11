@@ -1,6 +1,5 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
-#include <Config.h>
 
 void sendMessage(char *message, char *webhook_url)
 {
