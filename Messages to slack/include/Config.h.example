@@ -1,0 +1,3 @@
+#define WIFI_SSID "MyWifiNetwork"
+#define WIFI_PASS "MyWifiPassword"
+#define SLACK_WEBHOOK_URL "https://example.com/slack/webhook"
