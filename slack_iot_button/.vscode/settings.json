@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "*.module": "php",
+        "*.excalidraw": "json",
+        "*.excalidrawlib": "json",
+        "system_error": "cpp",
+        "cmath": "cpp"
+    }
+}
