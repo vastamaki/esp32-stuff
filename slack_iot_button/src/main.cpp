@@ -4,14 +4,17 @@
 
 #include <Config.h>
 
+#define LED_PIN GPIO_NUM_10
+
 void setup()
 {
   Serial.begin(115200);
 
   pinMode(GPIO_NUM_4, INPUT_PULLUP);
   pinMode(GPIO_NUM_3, INPUT_PULLUP);
+  pinMode(LED_PIN, OUTPUT);
 
-  pinMode(GPIO_NUM_8, OUTPUT);
+  digitalWrite(LED_PIN, HIGH);
 
   WiFi.begin(WIFI_SSID, WIFI_PASS);
 
@@ -21,7 +24,7 @@ void setup()
     Serial.println("Connecting to WiFi..");
   }
 
-  digitalWrite(GPIO_NUM_8, LOW);
+  digitalWrite(LED_PIN, LOW);
 }
 
 void loop()
@@ -32,11 +35,15 @@ void loop()
 
   if (GPIO == 3)
   {
+    digitalWrite(LED_PIN, HIGH);
     sendMessage("{\"text\":\":k-market:?\"}", SLACK_WEBHOOK_URL);
+    digitalWrite(LED_PIN, LOW);
   }
   else if (GPIO == 4)
   {
+    digitalWrite(LED_PIN, HIGH);
     sendMessage("{\"text\":\"Olisiko nyt sopiva aika söydä ruokaa?\"}", SLACK_WEBHOOK_URL);
+    digitalWrite(LED_PIN, LOW);
   }
 
   esp_deep_sleep_enable_gpio_wakeup(1 << GPIO_NUM_4, ESP_GPIO_WAKEUP_GPIO_LOW);
